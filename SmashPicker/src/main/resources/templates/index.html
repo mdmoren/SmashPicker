@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+</head>
+<body>
+<h1 th:text="${test}"/>
+
+<label for="characterSelector">Select a Character:</label>
+<select id="characterSelector" name="selectedCharacter">
+    <option th:each="item : ${listOfCharacterNames}" th:value="${item}" th:text="${item}"></option>
+</select>
+</body>
+</html>
