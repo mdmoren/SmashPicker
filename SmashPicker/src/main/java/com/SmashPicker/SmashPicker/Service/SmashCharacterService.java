@@ -20,6 +20,12 @@ public class SmashCharacterService {
     @Autowired
     private FranchiseService franchiseService;
 
+    /**
+     * Retrieve character details by name, including related characters and franchise details.
+     *
+     * @param characterName The name of the character to retrieve details for.
+     * @return A map containing character details, related characters, and franchise details.
+     */
     public Map<String, Object> getCharacterDetailsByName(String characterName) {
         SmashCharacter currentCharacter = smashCharactersRepo.findByCharacterName(characterName);
 
@@ -45,6 +51,11 @@ public class SmashCharacterService {
         }
     }
 
+    /**
+     * Retrieve a list of all character names.
+     *
+     * @return A list of character names.
+     */
     public List<String> getAllCharacterNames() {
         List<String> characterNames = new ArrayList<>();
         List<SmashCharacter> allCharacters = smashCharactersRepo.findAll();

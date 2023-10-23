@@ -2,14 +2,51 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Home Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Character Details</title>
+    <link rel="stylesheet" type="text/css" href="/Styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+    <script src="/Script.js"></script>
 </head>
 <body>
-<h1 th:text="${test}"/>
+<div class="container">
+    <header class="header">
+        <h1>Super Smash Character Details</h1>
+    </header>
+    <div class="content">
+        <section class="select-character">
+            <label for="characterSelector">Select a Character:</label>
+            <select id="characterSelector" name="selectedCharacter">
+                <option>Select...</option>
+                <option th:each="item : ${listOfCharacterNames}" th:value="${item}" th:text="${item}"></option>
+            </select>
+            <button type="submit" onclick="fetchCharacterDetails()">Submit</button>
+        </section>
+        <section class="character-details">
+            <!-- Display the JSON result here using Handlebars.js -->
+            <div id="characterDetails"></div>
+        </section>
+    </div>
+</div>
+<!-- Handlebars template -->
+<script id="character-details-template" type="text/x-handlebars-template">
+    <h2>{{characterDetails.characterName}}</h2>
+    {{#if relatedCharacters}}
+    <h3>Related Characters from {{characterDetails.franchise}}</h3>
+    <ul>
+        {{#each relatedCharacters}}
+        <li>{{characterName}}</li>
+        {{/each}}
+    </ul>
+    {{/if}}
+    <h3>Franchise Details</h3>
+    <p>Franchise: {{characterDetails.franchise}}</p>
+    <p>Founded: {{franchiseDetails.yearFounded}}</p>
+    <p>Genre: {{franchiseDetails.genre}}</p>
 
-<label for="characterSelector">Select a Character:</label>
-<select id="characterSelector" name="selectedCharacter">
-    <option th:each="item : ${listOfCharacterNames}" th:value="${item}" th:text="${item}"></option>
-</select>
+    <button id="clearButton" onclick="clearCharacterDetails()">Clear</button>
+</script>
+
 </body>
 </html>
