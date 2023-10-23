@@ -27,4 +27,6 @@ public class SmashCharacter {
     @Column(name = "franchise")
     private String franchise;
 
+    @Column(name = "description")
+    private String description;
 }

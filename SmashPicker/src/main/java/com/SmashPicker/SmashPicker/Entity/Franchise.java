@@ -28,4 +28,7 @@ public class Franchise {
     @Column(name = "genre")
     private String genre;
 
+    @Column(name = "country")
+    private String country;
+
 }

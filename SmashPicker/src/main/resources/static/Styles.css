@@ -1,0 +1,145 @@
+body {
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    background: #34495e80;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
+    background: #2c3e50;
+    box-shadow: 0 4px 2px -2px gray;
+}
+
+.header h1 {
+    margin: 0 10px;
+    text-align: center;
+    color: #ecf0f1;
+}
+
+.select-character {
+    display: flex;
+    position: relative;
+    border-radius: 25px;
+    background: #ecf0f1;
+    width: 400px;
+}
+
+.select-character input {
+    flex-grow: 1;
+    outline: none;
+    border: none;
+    background: transparent;
+    margin-left: 20px;
+}
+
+.select-character button {
+    display: block;
+    border: none;
+    background: #2ecc71;
+    padding: 10px;
+    border-radius: 25px;
+    margin: 5px;
+    font-weight: bold;
+}
+
+.select-character button:hover {
+    background: #27ae60;
+}
+
+.search-options {
+    position: absolute;
+    background: #ecf0f1;
+    background: white;
+    margin-top: 76px;
+    left: 0;
+    right: 0;
+    max-height: 500px;
+    overflow-y: scroll;
+    padding: 10px;
+}
+
+.option {
+    font-size: 15px;
+    font-weight: bold;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.option:hover {
+    background: #2ecc7180;
+}
+
+.option.no-results {
+    color: #c0392b;
+}
+
+.option.no-results:hover {
+    background: transparent;
+}
+
+.content {
+    flex-grow: 1;
+    margin: 10%;
+    padding: 20px;
+    background: #ecf0f1;
+    border-radius: 25px;
+    box-shadow: 0 4px 2px -2px gray;
+}
+
+.content button {
+    display: block;
+    border: none;
+    background: #e74c3c;
+    padding: 10px;
+    border-radius: 25px;
+    margin: 5px;
+    font-weight: bold;
+}
+
+.content button:hover {
+    background: #c0392b;
+}
+
+.content a {
+    cursor: pointer;
+}
+
+.content a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+    .header {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .header h1 {
+        font-size: 30px;
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 500px) {
+
+    .header h1 {
+        font-size: 25px;
+        margin-bottom: 10px;
+    }
+
+    .select-character {
+        width: 100%;
+    }
+}
