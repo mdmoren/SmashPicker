@@ -22,7 +22,7 @@ function hideInitialMessage() {
 }
 
 //--------------------------------------------------------------------------------------
-// handle fetching the data
+// handle fetching the data and error popup
 //--------------------------------------------------------------------------------------
 function handleFetch(characterName) {
     if (characterName) {
@@ -31,7 +31,7 @@ function handleFetch(characterName) {
             dataType: 'json',
             success: function (data) {
                 // Get the Handlebars template
-                const source = $("#character-details-template").html();
+                const source = $("#characterDetailsTemplate").html();
                 const template = Handlebars.compile(source);
 
                 // Render the template with the JSON data
@@ -51,9 +51,14 @@ function handleFetch(characterName) {
 function handleError(error, characterName) {
     clearCharacterDetails();
     console.error("Error fetching character details:", error);
-//   TODO: replace with more actual popup
-    const errorMessage = "Your search does not exist in the database. See console for error details.";
-    alert(errorMessage);
+
+    const errorPopup = $("#errorPopup")
+    errorPopup.show()
+}
+
+function closeErrorPopup() {
+    const errorPopup = $("#errorPopup")
+    errorPopup.hide()
 }
 
 function fetchCharacterDetails() {

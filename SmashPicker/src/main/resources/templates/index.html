@@ -8,6 +8,9 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
     <script src="/Script.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sometype+Mono&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -30,8 +33,6 @@
 
         <div class="content">
             <p class="initial-message" id="initialMessage">Search and select a character above and click GO</p>
-
-            <!-- TODO: Style this section better -->
             <section class="character-details">
                 <!-- Display the JSON result here using Handlebars.js -->
                 <div id="characterDetails"></div>
@@ -40,8 +41,18 @@
 
     </div>
 
+    <!--  Error Popup Modal -->
+    <div class="error-popup-container" id="errorPopup" style="display: none;">
+        <section class="error-popup-content">
+            <h3>Your search does not exist in the database. See console for error details.</h3>
+            <div class="close-error-button-container">
+                <button onclick="closeErrorPopup()">Close</button>
+            </div>
+        </section>
+    </div>
+
     <!-- Handlebars character template -->
-    <script id="character-details-template" type="text/x-handlebars-template">
+    <script id="characterDetailsTemplate" type="text/x-handlebars-template">
         <h2>{{characterDetails.characterName}}</h2>
         <p>{{characterDetails.description}}</p>
         {{#if relatedCharacters}}
