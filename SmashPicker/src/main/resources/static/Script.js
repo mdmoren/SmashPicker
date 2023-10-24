@@ -1,3 +1,6 @@
+//--------------------------------------------------------------------------------------
+// manages visibility of search options and initial message
+//--------------------------------------------------------------------------------------
 function showSearchOptions() {
     const searchOptions = $("#searchOptions");
     searchOptions.show();
@@ -18,6 +21,9 @@ function hideInitialMessage() {
     initialMessage.hide();
 }
 
+//--------------------------------------------------------------------------------------
+// handle fetching the data
+//--------------------------------------------------------------------------------------
 function handleFetch(characterName) {
     if (characterName) {
         $.ajax({
@@ -34,11 +40,20 @@ function handleFetch(characterName) {
                 // Display the rendered HTML in the "characterDetails" div
                 $("#characterDetails").html(html);
             },
-            error: function (error) {
-                console.error("Error fetching character details:", error);
+            error: function (error, characterName) {
+                handleError(error)
+// for some reason clearCharacterDetails() was not working here so I made a separate function
             }
         });
     }
+}
+
+function handleError(error, characterName) {
+    clearCharacterDetails();
+    console.error("Error fetching character details:", error);
+//   TODO: replace with more actual popup
+    const errorMessage = "Your search does not exist in the database. See console for error details.";
+    alert(errorMessage);
 }
 
 function fetchCharacterDetails() {
@@ -52,7 +67,9 @@ function fetchRelatedCharacterDetails(characterName) {
     handleFetch(characterName);
 }
 
-
+//--------------------------------------------------------------------------------------
+// resets search
+//--------------------------------------------------------------------------------------
 function clearCharacterDetails() {
     // Clear the character details
     $("#characterDetails").empty();
@@ -63,6 +80,9 @@ function clearCharacterDetails() {
     showInitialMessage();
 }
 
+//--------------------------------------------------------------------------------------
+// handle search filter
+//--------------------------------------------------------------------------------------
 function setSearch(option) {
     var characterName = $(option).text();
     $("#characterSelector").val(characterName);

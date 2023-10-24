@@ -97,7 +97,14 @@ body {
     box-shadow: 0 4px 2px -2px gray;
 }
 
+.clear-button-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
 .content button {
+    color: black;
     display: block;
     border: none;
     background: #e74c3c;

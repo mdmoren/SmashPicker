@@ -30,6 +30,8 @@
 
         <div class="content">
             <p class="initial-message" id="initialMessage">Search and select a character above and click GO</p>
+
+            <!-- TODO: Style this section better -->
             <section class="character-details">
                 <!-- Display the JSON result here using Handlebars.js -->
                 <div id="characterDetails"></div>
@@ -57,7 +59,9 @@
         <p>Founded: {{franchiseDetails.yearFounded}}</p>
         <p>Country: {{franchiseDetails.country}}</p>
         <p>Genre: {{franchiseDetails.genre}}</p>
-        <button id="clearButton" onclick="clearCharacterDetails()">Clear</button>
+        <div class="clear-button-container">
+            <button id="clearButton" onclick="clearCharacterDetails()">Close</button>
+        </div>
     </script>
 
 </body>
